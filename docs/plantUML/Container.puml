@@ -1,0 +1,24 @@
+@startuml CafeStreetContainerDiagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(client, "Cliente", "Usuário que faz pedidos de café através do aplicativo móvel.")
+Person(admin, "Adminstrador", "Administrador do sistema que gerencia o catálogo de cafés e pedidos.")
+
+System_Boundary(cafestreet, "CafeStreet") {
+  Container(webapp, "Aplicativo Web", "React", "Interface web para clientes fazerem pedidos de café.")
+  Container(api, "API RESTful", "Node.js (Nest.js)", "Gerencia pedidos de café, autenticação de usuários e comunicação com serviços externos.")
+  ContainerDb(database, "Banco de dados", "PostgreSQL", "Armazena dados de usuários, pedidos e catálogo de cafés.")
+}
+
+System_Ext(payments, "Sistema de Pagamento", "Serviço externo para processar pagamentos")
+System_Ext(delivery, "Serviço de Entrega", "Entrega os pedidos aos clientes")
+
+Rel(client, webapp, "Usa para fazer pedidos de café")
+Rel(admin, webapp, "Usa para gerenciar produtos e pedidos")
+Rel(webapp, api, "Chama rotas API")
+Rel(api, database, "Lê/Grava dados")
+Rel(api, payments, "Envia detalhes de pagamento")
+Rel(api, delivery, "Solicita entregas de pedidos")
+
+@enduml
+

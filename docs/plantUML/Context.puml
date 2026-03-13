@@ -1,0 +1,16 @@
+@startuml CafeStreetContext
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Person(client, "Cliente", "Usuário que faz pedidos de café através do aplicativo móvel.")
+Person(admin, "Adminstrador", "Administrador do sistema que gerencia o catálogo de cafés e pedidos.")
+
+System(cafestreet, "CafeStreet", "Sistema de pedidos de café que conecta clientes")
+System_Ext(payments, "Sistema de Pagamento", "Serviço externo para processar pagamentos.")
+System_Ext(delivery, "Serviço de Entrega", "Serviço externo que entrega os pedidos de café aos clientes.")
+
+Rel(client, cafestreet, "Usa")
+Rel(admin, cafestreet, "Gerencia")
+Rel(cafestreet, payments, "Envia pagamentos")
+Rel(cafestreet, delivery, "Solicita entregas")
+
+@enduml
