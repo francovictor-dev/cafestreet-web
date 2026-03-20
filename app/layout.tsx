@@ -1,4 +1,3 @@
-import LandingLayout from "@/components/layouts/landing";
 import { DialogProvider } from "@/contexts/dialog.context";
 import { LoadingProvider } from "@/contexts/loading.context";
 import { ReactQueryProviders } from "@/providers/react-query-provider";
@@ -26,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
         <ReactQueryProviders>
-          <LandingLayout>{children}</LandingLayout>
+          {children}
           <DialogProvider />
           <LoadingProvider />
           <ToastContainer />

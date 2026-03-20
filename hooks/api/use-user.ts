@@ -2,8 +2,8 @@ import { HttpClientOptions } from "@/configs/api/http-client";
 import { useQuery } from "@tanstack/react-query";
 
 export function useMe(
-  requestFn: (options?: HttpClientOptions) => Promise<User>,
-  options?: HttpClientOptions,
+  requestFn: (options?: HttpClientOptions<User>) => Promise<User>,
+  options?: HttpClientOptions<User>,
 ) {
   return useQuery({
     queryKey: ["me"],

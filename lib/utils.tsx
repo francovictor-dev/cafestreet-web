@@ -171,9 +171,6 @@ export function parseCurrencyToNumber(value: string) {
 }
 
 export function formatBRLCurrency(value: number) {
-  console.log(value);
-  //if (!value) return "R$ 0,00";
-
   const number =
     typeof value === "string" ? parseCurrencyToNumber(value) : value;
 

@@ -1,8 +1,9 @@
 // middleware.ts
 import { NextRequest, NextResponse } from "next/server";
 
-const PUBLIC_ROUTES = ["/admin/auth"];
-const PRIVATE_ROUTES_PREFIX = "/admin/dashboard";
+const PUBLIC_ROUTES = ["/admin/auth", "/client/auth"];
+//const PRIVATE_ROUTES_PREFIX = "/admin/dashboard";
+const PRIVATE_ROUTES_PREFIX = ["/admin/dashboard", "/client/dashboard"];
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -15,7 +16,7 @@ export function middleware(req: NextRequest) {
   }
 
   // 🚫 Usuário não logado tentando acessar admin
-  if (!accessToken && pathname.startsWith(PRIVATE_ROUTES_PREFIX)) {
+  if (!accessToken && PRIVATE_ROUTES_PREFIX.includes(pathname)) {
     return NextResponse.redirect(new URL("/admin/auth", req.url));
   }
 
@@ -23,5 +24,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/client/:path*"],
 };

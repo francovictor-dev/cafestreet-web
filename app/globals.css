@@ -221,6 +221,7 @@ body {
 /* Firefox */
 html {
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 /* IE antigo */

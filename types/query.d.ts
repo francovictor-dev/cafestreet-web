@@ -15,7 +15,8 @@ type Tables = {
 
 type ApiServer = {
   server: {
-    login: ResponseLogin;
+    "login-admin": ResponseLogin;
+    "login-client": ResponseLogin;
     logout: never;
     "verify-account": never;
   };

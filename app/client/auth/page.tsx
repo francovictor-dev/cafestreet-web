@@ -1,7 +1,7 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { signInAdmin } from "@/api/auth.api";
+import { signInClient } from "@/api/auth.api";
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/components/ui/field";
 import { IconButton } from "@/components/ui/icon-button";
@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 
 export default function AuthPage() {
   const Router = useRouter();
-  const { mutateAsync } = useLogin(signInAdmin);
+  const { mutateAsync } = useLogin(signInClient);
 
   const {
     register,
@@ -38,7 +38,7 @@ export default function AuthPage() {
   };
 
   const signInCompleted = () => {
-    Router.replace("/admin/dashboard/home");
+    Router.replace("/client/dashboard/home");
   };
 
   const onSubmit = async ({ email, password }: LoginFormData) => {
@@ -66,7 +66,7 @@ export default function AuthPage() {
           !isLoading && !isSuccess
             ? {
                 width: 350,
-                height: 320,
+                height: 370,
                 borderRadius: 32,
                 opacity: 1,
               }
@@ -122,6 +122,15 @@ export default function AuthPage() {
                   />
                 </Field>
                 <Button disabled={isSubmitting}>Entrar</Button>
+                <p className="body-md text-center text-bw-500">
+                  Não tem conta? Faça seu registro{" "}
+                  <span
+                    onClick={() => alert(11)}
+                    className="underline cursor-pointer"
+                  >
+                    aqui
+                  </span>
+                </p>
               </FieldGroup>
             </FieldSet>
           </form>
