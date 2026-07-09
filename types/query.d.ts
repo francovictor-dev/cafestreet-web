@@ -8,7 +8,9 @@ type Tables = {
     user: User;
     profile: Profile;
     product: Product;
-    "auth/login": ResponseLogin;
+    client: Client;
+    "auth/login-admin": ResponseLogin;
+    "auth/login-client": ResponseLogin;
     me: User;
   };
 };
@@ -19,6 +21,7 @@ type ApiServer = {
     "login-client": ResponseLogin;
     logout: never;
     "verify-account": never;
+    "register-client": never;
   };
 };
 

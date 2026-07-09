@@ -1,6 +1,6 @@
 "use client";
 
-import { DialogEditProductForm } from "@/components/products/dialog-edit-form";
+import { DialogEditProductForm } from "@/components/admin/products/dialog-edit-form";
 import { SimpleDialog } from "@/components/simple-dialog";
 import { Button } from "@/components/ui/button";
 import {

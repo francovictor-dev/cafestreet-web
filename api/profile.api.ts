@@ -14,3 +14,10 @@ export function getProfile(id: number, options?: HttpClientOptions<Profile>) {
   return httpClient("profile", { ...options, params: { id } }).single();
   //ou return httpClient(`profile/${id}`);
 }
+
+export function createProfile(data: CreateProfileType) {
+  return httpClient("profile", {
+    method: "POST",
+    body: JSON.stringify(data),
+  }).single();
+}

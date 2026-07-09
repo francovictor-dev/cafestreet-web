@@ -11,3 +11,10 @@ export function getUser(id: number, options?: HttpClientOptions<User>) {
 export function getMe(options?: HttpClientOptions<User>) {
   return httpClient("me", options).single();
 }
+
+export function createUser(data: CreateUserType) {
+  return httpClient("user", {
+    method: "POST",
+    body: JSON.stringify(data),
+  }).single();
+}

@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ☕ CafeStreet Web
 
-## Getting Started
+Frontend da aplicação **CafeStreet**, desenvolvido com **Next.js (App Router)**, **React**, **TypeScript** e **Tailwind CSS**.
 
-First, run the development server:
+Este projeto consome a API do CafeStreet e oferece uma interface moderna e responsiva para navegação, visualização de produtos e realização de pedidos.
+
+## 🚀 Tecnologias
+
+- Next.js 16 (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Fetch
+- React Query (tanstack)
+- React Hook Form
+- Zod
+- JWT Authentication
+- ESLint
+- Prettier
+
+## 📂 Estrutura do projeto
+
+```
+src/
+├── app/
+├── api/
+├── components/
+├── configs/
+├── contexts/
+├── docs/
+├── hooks/
+├── lib/
+├── providers/
+├── public/
+├── schemas/
+├── services/
+├── store/
+├── theme/
+└── types/
+
+```
+
+> A estrutura pode variar conforme a evolução do projeto.
+
+---
+
+## 📦 Instalação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/francovictor-dev/cafestreet-web.git
+```
+
+Entre na pasta do projeto:
+
+```bash
+cd cafestreet-web
+```
+
+Instale as dependências:
+
+```bash
+yarn
+```
+
+ou
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Executando o projeto
+
+Modo desenvolvimento:
+
+```bash
+yarn dev
+```
+
+ou
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A aplicação estará disponível em:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📦 Build para produção
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+yarn build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Executar a aplicação:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+yarn start
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧹 Lint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+yarn lint
+```
+
+---
+
+## ✨ Funcionalidades
+
+- Autenticação de usuários
+- Cadastro e login
+- Listagem de produtos
+- Busca e filtros
+- Carrinho de compras
+- Finalização de pedidos
+- Interface responsiva
+- Consumo de API REST
+- Validação de formulários
+- Componentização utilizando React
+
+> As funcionalidades podem variar conforme o desenvolvimento do projeto.
+
+---
+
+## 📱 Responsividade
+
+A interface foi desenvolvida seguindo o conceito **Mobile First**, adaptando-se para smartphones, tablets e desktops.
+
+---
+
+## 📁 Projeto relacionado
+
+Este frontend consome a API do projeto **CafeStreet API**, responsável pela autenticação, gerenciamento de produtos, usuários e pedidos.
+
+---
+
+## 📄 Licença
+
+Este projeto foi desenvolvido para fins de estudo e portfólio.

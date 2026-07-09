@@ -1,8 +1,4 @@
-enum UserType {
-  ADMIN = "admin",
-  CLIENT = "client",
-  DELIVERYMAN = "deliveryman",
-}
+type UserType = "admin" | "client" | "deliveryman";
 
 type Profile = {
   userId: number;
@@ -14,3 +10,9 @@ type Profile = {
   admin?: Admin;
   addresses?: Address[];
 } & DateTypes;
+
+type CreateProfileType = {
+  userId?: number;
+  userName: string;
+  userType: UserType;
+};

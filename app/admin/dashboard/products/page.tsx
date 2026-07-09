@@ -1,8 +1,8 @@
 "use client";
 
 import { deleteProduct, getProducts } from "@/api/product.api";
-import { DataTable } from "@/components/products/data-table";
-import { DialogAddForm } from "@/components/products/dialog-add-form";
+import { DataTable } from "@/components/admin/products/data-table";
+import { DialogAddForm } from "@/components/admin/products/dialog-add-form";
 import { Button } from "@/components/ui/button";
 import {} from "@/components/ui/table";
 import { useDeleteProduct, useProducts } from "@/hooks/api/use-products";

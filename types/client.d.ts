@@ -4,3 +4,7 @@ type Client = {
   //ratings?: Rating[];
   //orders: Order[];
 } & DateTypes;
+
+type CreateClientType = {
+  userId: number;
+};

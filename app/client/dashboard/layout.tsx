@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardAdminLayout from "@/components/layouts/dashboard-admin";
+import DashboardClientLayout from "@/components/layouts/dashboard-client";
 
 export default function RootLayout({
   children,
@@ -8,8 +8,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-row p-6">
-      <DashboardAdminLayout>{children}</DashboardAdminLayout>
+    <div className="flex flex-row">
+      <DashboardClientLayout>
+        <div className="min-h-screen bg-white">{children}</div>
+      </DashboardClientLayout>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
-import { updateProduct } from "@/api/product.api";
-import { useUpdateProduct } from "@/hooks/api/use-products";
+import { createProduct } from "@/api/product.api";
+import { useCreateProduct } from "@/hooks/api/use-products";
 import { useDebounce } from "@/hooks/use-debounce";
 import {
   CreateProductFormData,
@@ -10,25 +10,25 @@ import {
 import { dialog } from "@/services/dialog";
 import { loading } from "@/services/screen-loader";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Edit2 } from "lucide-react";
+import { Save } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { NumericFormat } from "react-number-format";
 import { toast } from "react-toastify";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import {
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../ui/dialog";
-import { Field, FieldGroup, FieldLabel, FieldSet } from "../ui/field";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
+} from "../../ui/dialog";
+import { Field, FieldGroup, FieldLabel, FieldSet } from "../../ui/field";
+import { Input } from "../../ui/input";
+import { Textarea } from "../../ui/textarea";
 
-export function DialogEditProductForm(data: Product) {
-  const { mutateAsync } = useUpdateProduct(updateProduct);
+export function DialogAddForm() {
+  const { mutateAsync } = useCreateProduct(createProduct);
   const {
     watch,
     getValues,
@@ -39,10 +39,10 @@ export function DialogEditProductForm(data: Product) {
   } = useForm<CreateProductFormData>({
     resolver: zodResolver(createProductSchema),
     defaultValues: {
-      ...data,
+      amount: 1,
+      photoUrl: "",
     },
   });
-
   const photoUrl = useDebounce(watch("photoUrl"));
 
   const [isValidImage, setIsValidImage] = useState(false);
@@ -53,14 +53,14 @@ export function DialogEditProductForm(data: Product) {
     setIsValidImage(res.ok);
   }, [photoUrl]);
 
-  const onSubmit = async (formData: CreateProductFormData) => {
-    loading.show("Editando produto...");
+  const onSubmit = async (data: CreateProductFormData) => {
+    loading.show("Criando produto...");
     try {
-      await mutateAsync({ ...formData, id: data.id });
+      await mutateAsync(data);
       dialog.close();
-      toast.success("Editado com sucesso!");
+      toast.success("Criado com sucesso!");
     } catch (e) {
-      toast.error("Erro na edição do produto");
+      toast.error("Erro na criação do produto");
       console.error(e);
     } finally {
       loading.close();
@@ -74,7 +74,7 @@ export function DialogEditProductForm(data: Product) {
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Fomulário de edição</DialogTitle>
+        <DialogTitle>Fomulário de criação</DialogTitle>
       </DialogHeader>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -155,8 +155,7 @@ export function DialogEditProductForm(data: Product) {
         </FieldSet>
         <DialogFooter className="mt-4">
           <Button disabled={isSubmitting || !isValidImage}>
-            <Edit2 />
-            Editar
+            <Save /> Criar
           </Button>
         </DialogFooter>
       </form>

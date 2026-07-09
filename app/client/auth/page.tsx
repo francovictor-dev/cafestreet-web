@@ -2,6 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { signInClient } from "@/api/auth.api";
+import DialogRegisterClient from "@/components/client/dialog-register";
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/components/ui/field";
 import { IconButton } from "@/components/ui/icon-button";
@@ -9,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { useLogin } from "@/hooks/api/use-auth";
 import successAnimation from "@/public/lotties/success-animation.json";
 import { LoginFormData, loginSchema } from "@/schemas/login.schema";
+import { dialog } from "@/services/dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { ArrowLeft } from "lucide-react";
@@ -39,6 +41,10 @@ export default function AuthPage() {
 
   const signInCompleted = () => {
     Router.replace("/client/dashboard/home");
+  };
+
+  const openRegisterDialog = () => {
+    dialog.show(<DialogRegisterClient />);
   };
 
   const onSubmit = async ({ email, password }: LoginFormData) => {
@@ -86,6 +92,7 @@ export default function AuthPage() {
           animate={isLoading ? { opacity: 0 } : { opacity: 1 }}
           transition={{ delay: isLoading ? 0 : 0.8 }}
         >
+          {" "}
           <IconButton
             size={"sm"}
             className="absolute ml-[-8] mt-[-16] p-1 flex flex-row items-center justify-end"
@@ -93,9 +100,7 @@ export default function AuthPage() {
           >
             <ArrowLeft size={24} />
           </IconButton>
-
           <label className="heading-md text-center mb-4">Login</label>
-
           <form onSubmit={handleSubmit(onSubmit)}>
             <FieldSet>
               <FieldGroup>
@@ -125,7 +130,7 @@ export default function AuthPage() {
                 <p className="body-md text-center text-bw-500">
                   Não tem conta? Faça seu registro{" "}
                   <span
-                    onClick={() => alert(11)}
+                    onClick={openRegisterDialog}
                     className="underline cursor-pointer"
                   >
                     aqui

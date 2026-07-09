@@ -1,4 +1,5 @@
 import { httpServer } from "@/configs/api/http-server";
+import { RegisterClientFormData } from "@/schemas/register-client";
 
 export async function signInAdmin({ email, password }: AuthLogin) {
   return httpServer("login-admin", {
@@ -23,5 +24,12 @@ export async function signInClient({ email, password }: AuthLogin) {
 export async function signOut() {
   return httpServer("logout", {
     method: "POST",
+  });
+}
+
+export async function createClient(data: RegisterClientFormData) {
+  return httpServer("register-client", {
+    method: "POST",
+    body: JSON.stringify(data),
   });
 }

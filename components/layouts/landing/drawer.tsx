@@ -17,12 +17,15 @@ import { ReactNode } from "react";
 const paths = [
   {
     name: "Sobre nós",
+    href: "/#about",
   },
   {
     name: "Produtos",
+    href: "/#product",
   },
   {
     name: "Login",
+    href: "/client/auth",
   },
 ];
 
@@ -37,11 +40,13 @@ export function DrawerScrollableContent({ children }: { children: ReactNode }) {
         </DrawerHeader>
         <div className="no-scrollbar overflow-y-auto px-4">
           {paths.map((item, index) => (
-            <Link key={index} href={""} className="flex flex-col">
-              <div className="flex flex-row gap-2 items-center">
-                <Dot />
-                <p className="my-3">{item.name}</p>
-              </div>
+            <Link key={index} href={item.href} className="flex flex-col">
+              <DrawerClose asChild>
+                <div className="flex flex-row gap-2 items-center">
+                  <Dot />
+                  <p className="my-3">{item.name}</p>
+                </div>
+              </DrawerClose>
               <Separator />
             </Link>
           ))}

@@ -5,12 +5,12 @@ export async function POST(req: Request) {
   const { email, password } = await req.json();
 
   try {
-    const data = await httpClient("auth/login", {
+    const data = await httpClient("auth/login-admin", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     }).single();
 
-    const response = NextResponse.json(data);
+    const response = NextResponse.json({ message: "Success" });
 
     response.cookies.set("access_token", data.accessToken, {
       httpOnly: true,
